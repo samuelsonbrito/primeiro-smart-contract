@@ -2,21 +2,21 @@ const main = async () => {
 
     const [owner, randomPerson] = await hre.ethers.getSigners();
 
-    const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
+    const tchauContractFactory = await hre.ethers.getContractFactory("TchauPortal");
 
-    const waveContract = await waveContractFactory.deploy();
-    await waveContract.deployed();
+    const tchauContract = await tchauContractFactory.deploy();
+    await tchauContract.deployed();
 
-    console.log("Contract deployed to:", waveContract.address);
+    console.log("Contract deployed to:", tchauContract.address);
     console.log("Contract deployed by:", owner.address);
 
-    let waveCount;
-    waveCount = await waveContract.getTotalWaves();
+    let tchauCount;
+    tchauCount = await tchauContract.getTotalTchauzinhos();
 
-    let waveTxn = await waveContract.connect(randomPerson).wave();
-    await waveTxn.wait();
+    let tchauTxn = await tchauContract.connect(randomPerson).tchau();
+    await tchauTxn.wait();
 
-    waveCount = await waveContract.getTotalWaves();
+    tchauCount = await tchauContract.getTotalTchauzinhos();
   };
   
   const runMain = async () => {
